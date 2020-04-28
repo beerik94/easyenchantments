@@ -14,6 +14,8 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -22,7 +24,8 @@ import nl.beerik.easyenchantments.init.EETileEntityTypes;
 import nl.beerik.easyenchantments.tile.DisenchanterTileEntity;
 
 public class DisenchanterBlock extends Block {
-
+	private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
+	
 	public static final BooleanProperty AUTOMATIC = BooleanProperty.create("automatic");
 	
 	public DisenchanterBlock(Properties properties) {
@@ -30,6 +33,11 @@ public class DisenchanterBlock extends Block {
 		this.setDefaultState(this.getDefaultState().with(AUTOMATIC, false));
 	}
 
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    return SHAPE;
+ }
+	
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return true;

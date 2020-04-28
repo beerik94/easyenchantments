@@ -1,6 +1,7 @@
 package nl.beerik.easyenchantments.tile;
 
 import java.util.Optional;
+import java.util.Random;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -11,8 +12,10 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
@@ -23,7 +26,7 @@ import nl.beerik.easyenchantments.container.DisenchanterContainer;
 import nl.beerik.easyenchantments.init.EEBlocks;
 import nl.beerik.easyenchantments.init.EETileEntityTypes;
 
-public class DisenchanterTileEntity extends TileEntity implements INamedContainerProvider {
+public class DisenchanterTileEntity extends TileEntity implements INamedContainerProvider, ITickableTileEntity {
 	
 	public static final int BOOK_SLOT = 0;
 	public static final int INPUT_SLOT = 1;
@@ -59,6 +62,12 @@ public class DisenchanterTileEntity extends TileEntity implements INamedContaine
 	public DisenchanterTileEntity() {
 		super(EETileEntityTypes.DISENCHANTER.get());
 	}
+	
+	@Override
+	public void tick() {
+		//
+	}
+	
 	
 	/**
 	 * @return If the stack is not empty and has a smelting recipe associated with it
