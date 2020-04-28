@@ -1,6 +1,9 @@
 {
-	"parent": "block/cube_all",
+	"parent": "minecraft:block/enchanting_table",
 	"textures": {
-		"all": "easyenchantments:block/disenchanter"
+		"particle": "minecraft:block/enchanting_table_bottom",
+		"bottom": "easyenchantments:block/disenchanter/disenchanter_bottom",
+		"top": "easyenchantments:block/disenchanter/disenchanter_top",
+		"side": "easyenchantments:block/disenchanter/disenchanter_side"
 	}
 }

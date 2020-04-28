@@ -12,12 +12,11 @@ import nl.beerik.easyenchantments.container.DisenchanterContainer;
 public class DisenchanterScreen extends ContainerScreen<DisenchanterContainer> {
 
 	private static final ResourceLocation BG_TEXTURE = new ResourceLocation(EasyEnchantments.MODID, "textures/gui/container/disenchanter.png");
-	private final int upgradeWindowSize = 29;
 	
 	public DisenchanterScreen(final DisenchanterContainer container, final PlayerInventory inventory,  final ITextComponent title) {
 		super(container, inventory, title);
-		this.xSize = 205;
-		this.ySize = 256;
+		this.xSize = 176;
+		this.ySize = 130;
 	}
 	
 	@Override
@@ -31,7 +30,7 @@ public class DisenchanterScreen extends ContainerScreen<DisenchanterContainer> {
 	protected void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		String s = this.title.getFormattedText();
-		this.font.drawString(s, (float) ((this.xSize - upgradeWindowSize) / 2 - this.font.getStringWidth(s) / 2), 6.0F, 0x404040);
+		this.font.drawString(s, (float) (this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 0x404040);
 		this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
 	}
 

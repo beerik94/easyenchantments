@@ -1,7 +1,11 @@
 {
 	"variants": {
-		"": {
+		"automatic=false": { 
 			"model": "easyenchantments:block/disenchanter"
+		},
+		"automatic=true": { 
+			"model": "easyenchantments:block/disenchanter",
+			"textures": "easyenchantments:block/disenchanter/disenchanter_top_automatic"
 		}
 	}
 }

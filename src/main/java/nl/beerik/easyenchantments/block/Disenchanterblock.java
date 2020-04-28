@@ -7,6 +7,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -19,11 +21,13 @@ import net.minecraftforge.items.ItemStackHandler;
 import nl.beerik.easyenchantments.init.EETileEntityTypes;
 import nl.beerik.easyenchantments.tile.DisenchanterTileEntity;
 
-public class Disenchanterblock extends Block {
+public class DisenchanterBlock extends Block {
 
-	public Disenchanterblock(Properties properties) {
+	public static final BooleanProperty AUTOMATIC = BooleanProperty.create("automatic");
+	
+	public DisenchanterBlock(Properties properties) {
 		super(properties);
-		// TODO Auto-generated constructor stub
+		this.setDefaultState(this.getDefaultState().with(AUTOMATIC, false));
 	}
 
 	@Override
@@ -59,5 +63,11 @@ public class Disenchanterblock extends Block {
 				NetworkHooks.openGui((ServerPlayerEntity) player, (DisenchanterTileEntity) tileEntity, pos);
 		}
 		return ActionResultType.SUCCESS;
+	}
+	
+	@Override
+	protected void fillStateContainer(final StateContainer.Builder<Block, BlockState> builder) {
+		super.fillStateContainer(builder);
+		builder.add(AUTOMATIC);
 	}
 }

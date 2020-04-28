@@ -6,10 +6,11 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import nl.beerik.easyenchantments.EasyEnchantments;
 
 public class EEItemGroups {
 	
-	//public static final ItemGroup EE_ITEM_GROUP = new ESItemGroup(EasyEnchantments.MODID, () -> new ItemStack(EEBlocks.STORAGE_CONTROLLER.get()));
+	public static final ItemGroup EE_ITEM_GROUP = new EEItemGroup(EasyEnchantments.MODID, () -> new ItemStack(EEBlocks.DISENCHANTER.get()));
 	
 	public static final class EEItemGroup extends ItemGroup {
 		

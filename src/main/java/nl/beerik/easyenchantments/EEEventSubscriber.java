@@ -3,7 +3,6 @@ package nl.beerik.easyenchantments;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +16,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import nl.beerik.easyenchantments.config.ConfigHelper;
 import nl.beerik.easyenchantments.config.ConfigHolder;
 import nl.beerik.easyenchantments.init.EEBlocks;
+import nl.beerik.easyenchantments.init.EEItemGroups;
 
 @EventBusSubscriber(modid = EasyEnchantments.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class EEEventSubscriber {
@@ -34,7 +34,7 @@ private static final Logger LOGGER = LogManager.getLogger(EasyEnchantments.MODID
 				// Register the BlockItem for the block
 				.forEach(block -> {
 					// Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
-					final Item.Properties properties = new Item.Properties();//.group(EEItemGroups.EE_ITEM_GROUP);
+					final Item.Properties properties = new Item.Properties().group(EEItemGroups.EE_ITEM_GROUP);
 					// Create the new BlockItem with the block and it's properties
 					final BlockItem blockItem = new BlockItem(block, properties);
 					// Set the new BlockItem's registry name to the block's registry name
@@ -43,13 +43,6 @@ private static final Logger LOGGER = LogManager.getLogger(EasyEnchantments.MODID
 					registry.register(blockItem);
 				});
 		LOGGER.debug("Registered BlockItems");
-	}
-	
-	@SubscribeEvent
-	public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
-		//event.getRegistry().registerAll(
-		//	setup(new StorageBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "storage_controller")
-		//);
 	}
 	
 	@SubscribeEvent

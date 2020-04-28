@@ -12,7 +12,6 @@ import nl.beerik.easyenchantments.container.EnchanterContainer;
 public class EnchanterScreen extends ContainerScreen<EnchanterContainer> {
 
 	private static final ResourceLocation BG_TEXTURE = new ResourceLocation(EasyEnchantments.MODID, "textures/gui/container/enchanter.png");
-	private final int upgradeWindowSize = 29;
 	
 	public EnchanterScreen(final EnchanterContainer container, final PlayerInventory inventory,  final ITextComponent title) {
 		super(container, inventory, title);
@@ -31,7 +30,7 @@ public class EnchanterScreen extends ContainerScreen<EnchanterContainer> {
 	protected void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		String s = this.title.getFormattedText();
-		this.font.drawString(s, (float) ((this.xSize - upgradeWindowSize) / 2 - this.font.getStringWidth(s) / 2), 6.0F, 0x404040);
+		this.font.drawString(s, (float) (this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 0x404040);
 		this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
 	}
 
