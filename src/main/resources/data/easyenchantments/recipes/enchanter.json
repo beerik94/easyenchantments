@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PBP",
+		"DOD",
+		"OOO"
+	],
+	"key": {
+		"O": {
+			"item": "minecraft:obsidian"
+		},
+		"D": {
+			"item": "minecraft:diamond"
+		},
+		"B": {
+			"item": "minecraft:book"
+		},
+		"P": {
+			"item": "minecraft:paper"
+		}
+	},
+	"result": {
+		"item": "easyenchantments:enchanter"
+	}
+}
