@@ -27,7 +27,7 @@ public class DisenchanterContainer extends Container {
 	public final DisenchanterTileEntity tile;
 	
 	private final IInventory outputBookInventory = new CraftResultInventory();
-	private final IInventory outputInventory = new Inventory(1);
+	private final IInventory outputInventory = new CraftResultInventory();
 	private final IInventory inputInventory = new Inventory(2) {
 		public void markDirty() {
 			super.markDirty();
@@ -70,13 +70,11 @@ public class DisenchanterContainer extends Container {
 				
 				newInput0 = DisenchanterContainer.this.updateEnchantments(input0);
 				if (newInput0.isEnchanted()) {
-					System.out.println("WeaponIsStillEnchanted");
 					DisenchanterContainer.this.inputInventory.setInventorySlotContents(0, newInput0);
 				}
 				else {
-					System.out.println("WeaponIsNOTEnchanted");
+					DisenchanterContainer.this.inputInventory.setInventorySlotContents(0, ItemStack.EMPTY);
 					DisenchanterContainer.this.outputInventory.setInventorySlotContents(0, newInput0);
-					//DisenchanterContainer.this.inputInventory.setInventorySlotContents(0, ItemStack.EMPTY);
 				}		
 				
 				int stackCount = input1.getCount();
