@@ -16,7 +16,7 @@ public class DisenchanterScreen extends ContainerScreen<DisenchanterContainer> {
 	public DisenchanterScreen(final DisenchanterContainer container, final PlayerInventory inventory,  final ITextComponent title) {
 		super(container, inventory, title);
 		this.xSize = 176;
-		this.ySize = 130;
+		this.ySize = 140;
 	}
 	
 	@Override
