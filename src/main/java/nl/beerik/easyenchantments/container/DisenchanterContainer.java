@@ -12,6 +12,7 @@ import net.minecraft.inventory.CraftResultInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.RepairContainer;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
@@ -155,13 +156,14 @@ public class DisenchanterContainer extends Container {
 		Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(outputStack);
 		Map.Entry<Enchantment, Integer> entry = map.entrySet().iterator().next();
 		map.remove(entry.getKey());
-		System.out.println("EnchantmentMapSizeBefore: " + map.size());
+		outputStack.setRepairCost(0);
 		if (!map.isEmpty()) {
-			System.out.println("EnchantmentMapSizeNotEmpty: " + map.size());
 			EnchantmentHelper.setEnchantments(map, outputStack);
+			for(int i = 0; i < map.size(); ++i) {
+				outputStack.setRepairCost(RepairContainer.getNewRepairCost(outputStack.getRepairCost()));
+			}
 		}
 		else {
-			System.out.println("EnchantmentMapSizeEmpty: " + map.size());
 			outputStack.removeChildTag("Enchantments");
 			outputStack.removeChildTag("StoredEnchantments");
 		}
